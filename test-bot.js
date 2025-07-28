@@ -46,16 +46,6 @@ const roomSettings = {
   }
 };
 
-function getWordForLetter(letter, index) {
-  const upper = letter.toUpperCase();
-  const bank = wordBank[upper];
-
-  if (!bank) return upper;
-
-  const pool = index % 2 === 0 ? bank.adjectives : bank.nouns;
-  return pool[Math.floor(Math.random() * pool.length)];
-}
-
 function rand(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }

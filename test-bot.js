@@ -5,6 +5,8 @@ const SERVER_URL = "https://acrophobia-backend-2.onrender.com";
 const ROOM = "room1";
 const PASSWORD = "bot123";
 
+const { getWordForLetter } = require("./themeLoader");
+
 // Adjective and Noun word bank
 const wordBank = {
   A: {
@@ -203,7 +205,7 @@ async function runBot(username) {
   socket.on("acronym_ready", async () => {
     if (!canSubmit || !currentAcronym) return;
     const letters = currentAcronym.toUpperCase().split("");
-    const words = letters.map((letter, index) => getWordForLetter(letter, index));
+    const words = letters.map((letter, index) => getWordForLetter(letter, index, currentTheme));
     const answer = words.join(" ");
 
     setTimeout(() => {

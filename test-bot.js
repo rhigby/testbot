@@ -8,110 +8,41 @@ const PASSWORD = "bot123";
 const { getWordForLetter } = require("./themeLoader");
 
 // Adjective and Noun word bank
-const wordBank = {
-  A: {
-    adjectives: ["Amazing", "Awkward", "Agile", "Ancient", "Angry", "Adorable", "Ambitious", "Aromatic", "Artful", "Astounding"],
-    nouns: ["Alligator", "Apple", "Artist", "Axe", "Astronaut", "Ant", "Arrow", "Avocado", "Anchor", "Alarm"]
+const roomSettings = {
+   Eighties: {
+    displayName: "80's Theme",
+    filterProfanity: true,
+    theme: "eighties"
   },
-  B: {
-    adjectives: ["Brave", "Bold", "Brilliant", "Bouncy", "Big", "Busy", "Bitter", "Bright", "Blissful", "Buzzing"],
-    nouns: ["Bear", "Book", "Balloon", "Butterfly", "Banana", "Box", "Bottle", "Bridge", "Bee", "Bus"]
+   Ninties: {
+    displayName: "90's Theme",
+    filterProfanity: true,
+    theme: "ninties"
   },
-  C: {
-    adjectives: ["Clever", "Crazy", "Cool", "Charming", "Creative", "Curious", "Crisp", "Cheerful", "Colorful", "Cozy"],
-    nouns: ["Cat", "Car", "Cloud", "Candle", "Cookie", "Clock", "Cactus", "Castle", "Cup", "Chair"]
+  CleanFun: {
+    displayName: "Clean Fun",
+    filterProfanity: true,
+    theme: "general"
   },
-  D: {
-    adjectives: ["Daring", "Dusty", "Dizzy", "Dynamic", "Dramatic", "Delightful", "Dangerous", "Dapper", "Dull", "Drifty"],
-    nouns: ["Dog", "Drum", "Duck", "Desk", "Diamond", "Donkey", "Door", "Dolphin", "Drawer", "Dragon"]
+  SportsArena: {
+    displayName: "Sports Arena",
+    filterProfanity: true,
+    theme: "sports"
   },
-  E: {
-    adjectives: ["Eager", "Epic", "Elegant", "Energetic", "Eccentric", "Exciting", "Earthy", "Easygoing", "Ethereal", "Enchanting"],
-    nouns: ["Elephant", "Egg", "Engine", "Eagle", "Envelope", "Earth", "Elf", "Exit", "Eye", "Elevator"]
+   AnythingGoes: {
+    displayName: "Anything Goes",
+    filterProfanity: false,
+    theme: "anything"
   },
-  F: {
-    adjectives: ["Funny", "Fierce", "Funky", "Fast", "Fluffy", "Frantic", "Fresh", "Frosty", "Fragrant", "Fuzzy"],
-    nouns: ["Fox", "Fan", "Feather", "Fork", "Fire", "Fish", "Frog", "Fence", "Flower", "Flag"]
+    LateNight: {
+    displayName: "Late Night",
+    filterProfanity: false,
+    theme: "anything"
   },
-  G: {
-    adjectives: ["Grumpy", "Golden", "Goofy", "Gentle", "Giant", "Gleaming", "Glorious", "Greedy", "Giddy", "Gracious"],
-    nouns: ["Giraffe", "Guitar", "Goat", "Ghost", "Gem", "Gate", "Glove", "Glacier", "Gnome", "Glass"]
-  },
-  H: {
-    adjectives: ["Happy", "Heroic", "Hungry", "Hot", "Hilarious", "Harsh", "Humble", "Haunted", "Helpful", "Hopeful"],
-    nouns: ["Horse", "Hat", "Helicopter", "Hammer", "House", "Hill", "Hawk", "Hose", "Heart", "Helmet"]
-  },
-  I: {
-    adjectives: ["Icy", "Ideal", "Impressive", "Invisible", "Illusive", "Incredible", "Intense", "Innovative", "Intelligent", "Iridescent"],
-    nouns: ["Igloo", "Ink", "Insect", "Island", "Iron", "Idea", "Iceberg", "Image", "Internet", "Invitation"]
-  },
-  J: {
-    adjectives: ["Jolly", "Jealous", "Jagged", "Joyful", "Jumpy", "Juicy", "Jazzy", "Jaded", "Judicious", "Jaunty"],
-    nouns: ["Jaguar", "Jelly", "Jeep", "Jewel", "Jar", "Jungle", "Jacket", "Joystick", "Journal", "Jump rope"]
-  },
-  K: {
-    adjectives: ["Kind", "Kooky", "Klutzy", "Keen", "Knockout", "Knowledgeable", "Knavish", "Kinetic", "Keyed-up", "Kosher"],
-    nouns: ["Kangaroo", "Key", "Kite", "Knife", "Kiwi", "Kernel", "Kitten", "Kiosk", "Keyboard", "King"]
-  },
-  L: {
-    adjectives: ["Loud", "Lazy", "Lively", "Lucky", "Lovely", "Luminous", "Lanky", "Loyal", "Lush", "Legendary"],
-    nouns: ["Lion", "Lamp", "Leaf", "Ladder", "Lemon", "Locket", "Lake", "Lizard", "Log", "Laptop"]
-  },
-  M: {
-    adjectives: ["Mad", "Moody", "Mighty", "Magical", "Massive", "Merry", "Modern", "Mysterious", "Melodic", "Majestic"],
-    nouns: ["Monkey", "Mountain", "Mug", "Moon", "Map", "Mouse", "Mirror", "Marker", "Motor", "Magazine"]
-  },
-  N: {
-    adjectives: ["Noble", "Nutty", "Nifty", "Noisy", "Nervous", "Neat", "Naughty", "Nimble", "Narrow", "Natural"],
-    nouns: ["Nose", "Notebook", "Needle", "Nest", "Net", "Necklace", "Ninja", "Nut", "Night", "Number"]
-  },
-  O: {
-    adjectives: ["Odd", "Old", "Open", "Optimistic", "Outstanding", "Ordinary", "Orange", "Obvious", "Obedient", "Opulent"],
-    nouns: ["Owl", "Orange", "Octopus", "Orb", "Onion", "Oven", "Ocean", "Oil", "Outlet", "Opera"]
-  },
-  P: {
-    adjectives: ["Proud", "Playful", "Pink", "Powerful", "Puzzled", "Peaceful", "Prickly", "Polished", "Precise", "Poetic"],
-    nouns: ["Penguin", "Pencil", "Pizza", "Pumpkin", "Puppy", "Pan", "Plane", "Peach", "Pig", "Parrot"]
-  },
-  Q: {
-    adjectives: ["Quick", "Quiet", "Quirky", "Quaint", "Queasy", "Quarrelsome", "Qualified", "Quotable", "Questionable", "Quenched"],
-    nouns: ["Queen", "Quilt", "Quartz", "Quokka", "Quiver", "Quest", "Quote", "Quail", "Queue", "Quarter"]
-  },
-  R: {
-    adjectives: ["Rough", "Rapid", "Radical", "Rusty", "Rowdy", "Rational", "Reckless", "Radiant", "Rare", "Robust"],
-    nouns: ["Rabbit", "Robot", "Rainbow", "Rock", "Rose", "Ring", "Road", "Radio", "Ruler", "Raccoon"]
-  },
-  S: {
-    adjectives: ["Silly", "Sharp", "Spunky", "Sleepy", "Savage", "Sincere", "Shiny", "Speedy", "Sneaky", "Spicy"],
-    nouns: ["Snake", "Sun", "Star", "Shell", "Sandwich", "Skateboard", "Spider", "Sock", "Sword", "Seal"]
-  },
-  T: {
-    adjectives: ["Tiny", "Tired", "Tough", "Tenacious", "Terrific", "Timid", "Tasty", "Transparent", "Thrifty", "Tangy"],
-    nouns: ["Tiger", "Table", "Turtle", "Train", "Tooth", "Tree", "Truck", "Towel", "Tent", "Trophy"]
-  },
-  U: {
-    adjectives: ["Ugly", "Unique", "Untamed", "Unreal", "Upset", "Useful", "Ultra", "Unusual", "Urban", "Upbeat"],
-    nouns: ["Umbrella", "Unicorn", "Urn", "Uniform", "Utility", "Universe", "Ukulele", "UFO", "Utensil", "Undertow"]
-  },
-  V: {
-    adjectives: ["Vast", "Vivid", "Valiant", "Velvety", "Violent", "Vigorous", "Visible", "Vital", "Vengeful", "Vocal"],
-    nouns: ["Violin", "Volcano", "Vampire", "Vase", "Vegetable", "Village", "Van", "Vest", "Vision", "Vine"]
-  },
-  W: {
-    adjectives: ["Wild", "Witty", "Wobbly", "Weird", "Wacky", "Warm", "Windy", "Wicked", "Wise", "Woeful"],
-    nouns: ["Wolf", "Watermelon", "Worm", "Whale", "Watch", "Wheel", "Window", "Wrench", "Wagon", "Wizard"]
-  },
-  X: {
-    adjectives: ["Xenial", "Xtreme", "Xenophobic", "Xeno", "Xyloid", "Xanthic", "Xeric", "Xenogenetic", "Xenolithic", "Xenodochial"],
-    nouns: ["Xylophone", "Xerus", "X-ray", "Xenops", "Xenon", "Xiphoid", "Xebec", "Xylitol", "Xenograft", "Xylograph"]
-  },
-  Y: {
-    adjectives: ["Young", "Yawning", "Yearning", "Yummy", "Yappy", "Yellow", "Yielding", "Youthful", "Yonder", "Yucky"],
-    nouns: ["Yak", "Yogurt", "Yacht", "Yarn", "Yam", "Yeti", "Yard", "Yearbook", "Yurt", "Yolk"]
-  },
-  Z: {
-    adjectives: ["Zany", "Zesty", "Zealous", "Zippy", "Zigzag", "Zonked", "Zoological", "Zincous", "Zygotic", "Zapped"],
-    nouns: ["Zebra", "Zoo", "Zucchini", "Zeppelin", "Zipper", "Zither", "Zone", "Zigzag", "Zookeeper", "Zodiac"]
+   TheCouch: {
+    displayName: "The Couch",
+    filterProfanity: false,
+    theme: "anything"
   }
 };
 
@@ -160,7 +91,7 @@ async function runBot(username) {
   let hasVoted = false;
   
   const settings = roomSettings[ROOM] || {};
-  const currentTheme = settings.theme || "general";
+  const currentTheme = settings.theme || "eighties";
   
   socket.on("connect", () => {
     console.log(`[${username}] Connected`);

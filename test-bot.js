@@ -115,6 +115,10 @@ const wordBank = {
   }
 };
 
+let currentTheme = "general";
+if (roomSettings[ROOM]?.theme) {
+  currentTheme = roomSettings[ROOM].theme;
+}
 
 function getWordForLetter(letter, index) {
   const upper = letter.toUpperCase();
@@ -125,9 +129,6 @@ function getWordForLetter(letter, index) {
   const pool = index % 2 === 0 ? bank.adjectives : bank.nouns;
   return pool[Math.floor(Math.random() * pool.length)];
 }
-
-
-
 
 function rand(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;

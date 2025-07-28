@@ -115,11 +115,6 @@ const wordBank = {
   }
 };
 
-let currentTheme = "general";
-if (roomSettings[ROOM]?.theme) {
-  currentTheme = roomSettings[ROOM].theme;
-}
-
 function getWordForLetter(letter, index) {
   const upper = letter.toUpperCase();
   const bank = wordBank[upper];
@@ -163,7 +158,10 @@ async function runBot(username) {
 
   let canSubmit = false;
   let hasVoted = false;
-
+  
+  const settings = roomSettings[ROOM] || {};
+  const currentTheme = settings.theme || "general";
+  
   socket.on("connect", () => {
     console.log(`[${username}] Connected`);
     if (!token) {

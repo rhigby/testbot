@@ -2,7 +2,7 @@ const { io } = require("socket.io-client");
 const fetch = require("node-fetch");
 
 const SERVER_URL = "https://acrophobia-backend-2.onrender.com";
-const ROOM = "room1";
+const ROOM = "Eighties";
 const PASSWORD = "bot123";
 
 const { getWordForLetter } = require("./themeLoader");

@@ -131,6 +131,12 @@ function rand(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+
+function launchBot(username, roomName) {
+  process.env.ROOM = roomName;
+  runBot(username, roomName);
+}
+
 async function runBot(username) {
   let token;
   let currentAcronym = null;
@@ -225,7 +231,7 @@ async function runBot(username) {
   });
 }
 
-["Bot1", "Bot2", "Bot3", "Bot4"].forEach(runBot);
+module.exports = { launchBot };
 
 
 
